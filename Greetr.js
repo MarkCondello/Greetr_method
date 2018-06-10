@@ -5,21 +5,27 @@
 	}
 
 /* unexposed values start*/
-	var supportedLang = ["en", "es"];
+	var supportedLang = ["en", "es", "it"];
 
 	var greetings = {
 		en: "Hello",
-		es: "Holla"
+		es: "Holla",
+		it: "Ciow"
+
 	};
 
 	var formalGreetings = {
 		en: "Greetings",
-		es: "Saludos"
+		es: "Saludos",
+		it: "Buon giorno"
+
 	};
 
 	var logMessages = {
 		en: "Logged in",
-		es: "Inicio sesion"
+		es: "Inicio sesion",
+		it: "Registrati"
+
 	}
 /* unexposed values end*/
 
@@ -111,5 +117,4 @@
 
 })(window, jQuery);
 
-var me = G$("Markamus", "Condello", "es");
-me.greet(true).updateEl("#greeting", true);
+
