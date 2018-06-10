@@ -68,7 +68,7 @@
 			return this;
 		},
 
-		//allows option to swtich language
+		//allows the option to swtich language
 		setLang(lang){
 			this.language = lang;
 			this.validate();
@@ -89,6 +89,8 @@
 
 })(window, jQuery);
 
+var me = G$("Markamus", "Condello", "es");
+me.greet().formalGreeting();
  
  /*
 //Notes:
