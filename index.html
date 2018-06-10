@@ -3,8 +3,29 @@
         
     </head>
     <body>
+    	<div id="logindiv">
+    		<select id="lang">
+    			<option value="en">English</option>
+    			<option value="es">Spanish</option>
+    		</select>
+    		<input type="button" value="Login" id="login">
+    	</div>
+    	<h1 id="greeting"></h1>
         <script src="jquery-1.11.2.js"></script>
         <script src="Greetr.js"></script>
         <script src="app.js"></script>
     </body>
 </html>
+
+<!-- add a method which takes a jquery object and updates whatever the selector is with the greetr method.
+We can do this by adding a method in the protoype which takes a selector, if it is formal or not.
+It should output to the element selector.
+eg
+updateEl(selector, isFormal = false){
+	if(isFormal){
+	$(selector).html(`${formalGreeting()}`)
+	} else {
+	$(selector).html(`${greeting}`)
+	}
+} 
+-->

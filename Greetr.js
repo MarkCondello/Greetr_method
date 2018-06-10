@@ -32,9 +32,10 @@
 		validate(){
 			if(supportedLang.indexOf(this.language) === -1){
 				throw "Invalid language.";
-			};// is the value entered for language within the array
+			};// is the value entered for language supported within the array
 		},
 
+		//informal greeting
 		greeting(){
 			return `${greetings[this.language]} ${this.firstName}!`;  
 		},
@@ -73,7 +74,23 @@
 			this.language = lang;
 			this.validate();
 			return this;
-		}
+		},
+
+		//update a selector with the generated content from Greetr
+		updateEl(selector, isFormal = false){
+			if(!selector){
+				throw "Missing selector option";
+			}
+			var msg;
+			if(isFormal){
+				msg = `${this.formalGreeting()}`;
+			} else {
+				msg = `${this.greeting()}`;
+			}
+
+			$(selector).text(msg)
+			return this;
+		} 
 	};
 
 	Greetr.init = function(firstName, lastName, language){
@@ -81,19 +98,18 @@
 		self.firstName = firstName || "";
 		self.lastName = lastName || "";
 		self.language = language || "en";
+
+		//check if the language entered is supported
+		self.validate();
 	};
 
+	//set the init method to the Greetr prototype so it shares its methods
 	 Greetr.init.prototype = Greetr.prototype;
 
+	 //set the keywords to use the Greetr method in the global context
 	global.Greetr = global.G$ = Greetr ;
 
 })(window, jQuery);
 
 var me = G$("Markamus", "Condello", "es");
-me.greet().formalGreeting();
- 
- /*
-//Notes:
- by the time that Greetr is called, the Greetr.init method will have run so we can use the new keyword to create the method.
-
-*/
+me.greet(true).updateEl("#greeting", true);
